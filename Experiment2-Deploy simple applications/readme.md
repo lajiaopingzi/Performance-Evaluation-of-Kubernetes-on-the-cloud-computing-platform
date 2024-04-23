@@ -1,0 +1,1 @@
+This shows the detailed steps of deploying simple applications. One is kind, the other is Ingress.

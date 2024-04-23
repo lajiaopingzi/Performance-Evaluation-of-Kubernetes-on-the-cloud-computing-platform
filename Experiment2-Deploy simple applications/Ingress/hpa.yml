@@ -1,0 +1,19 @@
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+     name: ingress-nginx-controller-hpa
+     namespace: ingress-nginx
+spec:
+    scaleTargetRef:
+       apiVersion: apps/v1
+       kind: Deployment
+       name: ingress-nginx-controller  # Deployment Name
+    minReplicas: 3   # Minimum number of copies
+    maxReplicas: 6   # Maximum number of copies
+    metrics:
+    - resource:
+          name: cpu
+          target:
+             averageUtilization: 80 # threshold
+             type: Utilization
+      type: Resource

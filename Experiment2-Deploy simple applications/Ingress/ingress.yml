@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+     name: demo
+spec:
+    rules:
+    - host: demo.kubesre.com  # url
+      http:
+          paths:
+          - path: /info    # uri
+             pathType: Prefix  # matching method
+             backend:
+                 service:
+                    name: demo-svc  # Service Name
+                    port:
+                        number: 8080  # Service accessing port
+     ingressClassName: nginx
